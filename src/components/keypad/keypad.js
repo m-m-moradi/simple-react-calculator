@@ -7,29 +7,33 @@ export default function Keypad() {
   const handleButtonClick = (button) => {
     // TODO: handle clicking here.
     console.log(button);
+    console.log(
+            button.isAction ? s.dark : s.light
+)
   };
 
   const buttons = [
-    { text: 'C', isDark: true },
-    { text: '+/-', isDark: true },
-    { text: '%', isDark: true },
-    { text: '÷', isDark: true },
+    { text: 'C', isAction: true },
+    { text: '+/-', isAction: true },
+    { text: '%', isAction: true },
+    { text: '÷', isAction: true },
     { text: '7' },
     { text: '8' },
     { text: '9' },
-    { text: 'x', isDark: true },
+    { text: 'x', isAction: true },
     { text: '4' },
     { text: '5' },
     { text: '6' },
-    { text: '-', isDark: true },
+    { text: '-', isAction: true },
     { text: '1' },
     { text: '2' },
     { text: '3' },
-    { text: '+', isDark: true },
+    { text: '+', isAction: true },
     { text: '0', isLarge: true },
     { text: '.' },
-    { text: '=', isDark: true },
+    { text: '=', isAction: true },
   ];
+  console.log(s.dark)
 
   return (
     <div className={s.keypad}>
@@ -37,10 +41,10 @@ export default function Keypad() {
         <Button
           key={button.text}
           text={button.text}
-          onClick={handleButtonClick}
+          onClick={() => handleButtonClick(button)}
           className={cx(
             button.isLarge && s['button-2x'],
-            button.isDark && s.dark,
+            button.isAction ? s.dark : s.light
           )}
         />
       ))}

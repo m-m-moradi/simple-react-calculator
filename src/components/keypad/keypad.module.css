@@ -9,5 +9,9 @@
 }
 
 .dark {
-  background-color: #323232;
+  background-color: #323232 !important;
+}
+
+.light {
+  background-color: #585656 !important;
 }
