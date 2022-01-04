@@ -2,10 +2,17 @@ import React from 'react';
 import s from './screen.module.css';
 import PropTypes from 'prop-types';
 
-export default function Screen({ text }) {
+export default function Screen({ text, history, pressedOperation }) {
   // TODO: Show the clicked button or result here.
 
-  return <div className={s.screen}>{text}</div>;
+  return (
+    <div>
+      <div className={s.history}>{history}</div>
+      <div className={s.operation}>{pressedOperation}</div>
+      <div className={s.screen}>{text}</div>
+    </div>
+  )
+
 }
 
 Screen.propTypes = {

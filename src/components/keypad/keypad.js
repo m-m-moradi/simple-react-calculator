@@ -3,7 +3,7 @@ import s from "./keypad.module.css";
 import Button from "../button";
 import cx from "classnames";
 
-export default function Keypad({ addDigit2Stack, availableOperations, previousOperation, saveOperation, saveOperand}) {
+export default function Keypad({ addDigit2Stack, availableOperations, previousOperation, saveOperation, saveOperand ,savePressedOperation}) {
   const handleButtonClick = (button) => {
     if (button.isAction) {
       switch (button.text) {
@@ -14,11 +14,12 @@ export default function Keypad({ addDigit2Stack, availableOperations, previousOp
           availableOperations.flip()
           break;
         default:
-          saveOperation(availableOperations[button.text])
-          if (previousOperation)
-            availableOperations.ans(previousOperation, button.text == '=' ? true: false);
-          else
-            saveOperand()
+          saveOperation(button.text)
+          savePressedOperation(button.text)
+          if (previousOperation){
+            availableOperations.ans(previousOperation, button.text === '=' ? true: false);
+          } else
+             saveOperand()
       }
     } else
       addDigit2Stack(button.text);
